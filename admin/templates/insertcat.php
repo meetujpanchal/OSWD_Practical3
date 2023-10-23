@@ -6,9 +6,9 @@ if (isset($_POST['submit'])) {
 
     $cn = $_POST['name'];
 
-    $fields = [
+    $fields = array(
         'name'=> $cn
-    ];
+    );
 
     echo $cn;
 
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
 
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl,CURLOPT_POST,1);
-    curl_setopt($curl,CURLOPT_POSTFIELDS, $cn);
+    curl_setopt($curl,CURLOPT_POSTFIELDS, http_build_query($fields));
     curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 
     $response = curl_exec($curl);
